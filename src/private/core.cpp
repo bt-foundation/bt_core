@@ -1,18 +1,15 @@
-#include "types.hpp"
 #include "core.hpp"
 
 #include <print>
 
-namespace bt::core
-{
-    void example_fun()
-    {
-        types::vector<int> test{1,2,3,4,5};
+#include "types.hpp"
 
-        for (auto& v : test)
-        {
-            std::print("{}", v);
-        }
-        
+namespace bt::core {
+void example_fun() {
+    types::vector<int> test {1, 2, 3, 4, 5};
+
+    for (auto& val : test) {
+        std::print("{}", val);
     }
-} // namespace bt_template
+}
+} // namespace bt::core

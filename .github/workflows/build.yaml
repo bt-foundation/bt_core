@@ -67,8 +67,11 @@ jobs:
       - name: Build (Linux)
         run: cmake --build build --config Release
   
-  build-wasm:
+  build-wasm-plus-clang-tidy:
     runs-on: ubuntu-latest
+    permissions:
+      contents: write
+      pull-requests: write
     strategy:
       fail-fast: false
 
@@ -96,6 +99,23 @@ jobs:
           cmake --build build/wasm
           mkdir bin
           mkdir bin/wasm
-          emcc -g build/wasm/libbt_core.a -o bin/wasm/bt_core.js
+          emcc -g build/wasm/libbt_template.a -o bin/wasm/template.js
 
+      - uses: cpp-linter/cpp-linter-action@v2
+        id: linter
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        with:
+          version: '21'
+          style: file
+          auto-fix: 'true'
+          tidy-checks: ''
+          database: build/wasm
+          files-changed-only: true
+          step-summary: true
+          tidy-review: true
+
+      - name: Fail if clang-tidy reported anything
+        if: steps.linter.outputs.clang-tidy-checks-failed > 0
+        run: exit 1
       
