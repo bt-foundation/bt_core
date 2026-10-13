@@ -8,6 +8,7 @@ Project(${PROJECT_NAME} VERSION 0.0.1 LANGUAGES CXX)
 Set(CMAKE_EXPORT_COMPILE_COMMANDS ON CACHE INTERNAL "")
 
 option(${PROJECT_NAME}_STANDALONE "Build the project by itself" ON)
+option(${PROJECT_NAME}_BUILD_TESTS "Build project tests" ON)
 
 If (APPLE)
     Enable_Language(OBJCXX)
@@ -27,4 +28,8 @@ Include(CMake/mods.cmake)
 
 If(NOT ${${PROJECT_NAME}_STANDALONE})
     Include(CMake/examples.cmake)
+Endif()
+
+If(${${PROJECT_NAME}_BUILD_TESTS})
+    Include(CMake/tests.cmake)
 Endif()
