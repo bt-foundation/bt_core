@@ -15,6 +15,7 @@ CPMAddPackage(
     GIT_TAG main # change to any branch you'd like
     OPTIONS "BT_STANDALONE ON" # Custom CMake options
 )
+Set_Property(TARGET bt_types PROPERTY FOLDER "Dependencies")
 
 If(${${PROJECT_NAME}_BUILD_TESTS})
     enable_testing()
@@ -24,4 +25,8 @@ If(${${PROJECT_NAME}_BUILD_TESTS})
         GITHUB_REPOSITORY "google/googletest"
         GIT_TAG main
     )
+    Set_Property(TARGET gtest PROPERTY FOLDER "Dependencies")
+    Set_Property(TARGET gtest_main PROPERTY FOLDER "Dependencies")
+    Set_Property(TARGET gmock PROPERTY FOLDER "Dependencies")
+    Set_Property(TARGET gmock_main PROPERTY FOLDER "Dependencies")
 Endif()
