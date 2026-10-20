@@ -15,7 +15,7 @@ CPMAddPackage(
     GIT_TAG main # change to any branch you'd like
     OPTIONS "BT_STANDALONE ON" # Custom CMake options
 )
-Set_Property(TARGET bt_core PROPERTY FOLDER "Dependencies")
+Set_Property(TARGET bt_types PROPERTY FOLDER "Dependencies")
 
 If(${${PROJECT_NAME}_BUILD_TESTS})
     enable_testing()
