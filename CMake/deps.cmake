@@ -13,7 +13,7 @@ CPMAddPackage(
     NAME bt_types
     GITHUB_REPOSITORY "bt-foundation/bt_types"
     GIT_TAG main # change to any branch you'd like
-    OPTIONS "BT_STANDALONE ON" # Custom CMake options
+    OPTIONS "bt_types_STANDALONE ON" "bt_types_BUILD_TESTS OFF" # Custom CMake options
 )
 Set_Property(TARGET bt_types PROPERTY FOLDER "Dependencies")
 
