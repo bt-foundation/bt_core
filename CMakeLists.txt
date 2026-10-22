@@ -6,6 +6,7 @@ Set(PROJECT_NAME bt_core)
 Project(${PROJECT_NAME} VERSION 0.0.1 LANGUAGES CXX)
 
 Set(CMAKE_EXPORT_COMPILE_COMMANDS ON CACHE INTERNAL "")
+Set(CPM_SOURCE_CACHE ".cache")
 
 option(${PROJECT_NAME}_STANDALONE "Build the project by itself" ON)
 option(${PROJECT_NAME}_BUILD_TESTS "Build project tests" ON)
